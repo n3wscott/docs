@@ -1,0 +1,14 @@
+# This is a very simple Knative Service that writes the received cloudevent to
+# its log.
+
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: pong
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: gcr.io/knative-releases/github.com/knative/eventing/cmd/pong

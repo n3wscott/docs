@@ -1,0 +1,19 @@
+# This is a very simple Pod that sends an event.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ping
+spec:
+  spec:
+    containers:
+    - args:
+      - "-event-id"
+      - "dev.knative.ping"
+      - "http://default-broker.default.svc.cluster.local"
+#    image: gcr.io/knative-releases/github.com/knative/eventing/cmd/sendevent
+    image: github.com/knative/eventing/cmd/sendevent
+    name: "sendevent"
+    restartPolicy: Never
+
+## TODO: add the triggers.
